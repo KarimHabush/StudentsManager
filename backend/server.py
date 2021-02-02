@@ -18,7 +18,7 @@ def students():
     return response
 @app.route('/students/show_data')
 def note():
-   db_cursor.execute('SELECT * FROM student')
+   db_cursor.execute('SELECT * FROM students')
    data = db_cursor.fetchall()
    response = app.response_class(
         response=json.dumps(data),
