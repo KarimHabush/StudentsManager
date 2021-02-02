@@ -1,7 +1,7 @@
 from flask import Flask, request, Response,jsonify
 from flask import jsonify
 from flaskext.mysql import MySQL
-from db_connection import db_cursor, get_students, add_student
+from db_connection import db_cursor, get_students, add_student , delete_student
 import json 
 app = Flask(__name__)
 
@@ -16,7 +16,17 @@ def students():
         mimetype='application/json'
     )
     return response
+@app.route('/students/delete', methods = ['POST'])
+def delete():
+    args = request.get_json()
+    result = delete_student(args['id'])
+    response = app.response_class(
+        response=json.dumps(result),
+        status=200,
+        mimetype='application/json'
+    )
 
+    return response
 
 @app.route('/students/add', methods = ['POST'])
 def add():
