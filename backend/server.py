@@ -2,32 +2,33 @@ from flask import Flask, request, Response,jsonify
 from flask import jsonify
 from flaskext.mysql import MySQL
 from db_connection import db_cursor
-
+import json 
 app = Flask(__name__)
 
 
-@app.route('/students')
+@app.route('/students', methods = ['GET'])
 def students():
     
 
     db_cursor.execute("SELECT * from students")
     data = db_cursor.fetchall()
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
-    return jsonify({
-        'status':'success',
-        'result':data
-    })
 
-
-@app.route('/students/add')
+@app.route('/students/add', methods = ['POST'])
 def add_student():
-
-    db_cursor.execute("SELECT * from students")
-    data = db_cursor.fetchall()
-
-    return jsonify({
-        'status':'success',
-        'result':data
-    })
+    args = request.json
+    print(args)
+    response = app.response_class(
+        response=json.dumps(args),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 	
 
