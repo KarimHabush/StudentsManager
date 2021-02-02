@@ -11,8 +11,11 @@ db_cursor = db.cursor()
 
 
 def get_students(): 
-  db_cursor.execute("SELECT * from students")
-  result = db_cursor.fetchall()
+  try:
+    db_cursor.execute("SELECT * from students")
+    result = db_cursor.fetchall()
+  except Exception:
+    result = 'Ops..'
   return result
 def delete_student(id):
   query = ("DELETE FROM students WHERE id = %s")

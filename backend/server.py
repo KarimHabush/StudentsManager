@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/students')
+@app.route('/students', methods = ['GET'])
 def students():
     data = get_students()
     print(data)
