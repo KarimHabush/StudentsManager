@@ -16,10 +16,16 @@ def get_students():
   return result
 
 def add_student(name,mark): 
-  query = "INSERT INTO employees (name, mark) VALUES (%s, %s)"
+  query = ("INSERT INTO students (name, mark) VALUES (%s, %s)")
   data = (name,mark)
-  db_cursor.execute(query, data)
-  result = db_cursor.fetchall()
+  try:
+    db_cursor.execute(query, data)
+    db.commit()
+    result = "L'étudiant est ajouté avec succès"
+  except Exception:
+    result = "L'étudiant n'est pas ajouté"
+  finally:
+    db_cursor.close()
   return result
 
 
