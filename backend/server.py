@@ -20,12 +20,20 @@ def students():
 
 @app.route('/students/add', methods = ['POST'])
 def add_student():
+<<<<<<< HEAD
     args = request.get_json()
 
 
     
+=======
+    request_data = request.get_json()
+    nom_etudiant = request_data['nom_etudiant']
+    note = request_data['note']
+    print(nom_etudiant)
+    print(note)
+>>>>>>> d220e905ca1aa5cdfdadb3311301ef4e00f6ab8f
     response = app.response_class(
-        response=json.dumps(args),
+        response=json.dumps(nom_etudiant,note),
         status=200,
         mimetype='application/json'
     )
