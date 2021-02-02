@@ -16,7 +16,16 @@ def students():
         mimetype='application/json'
     )
     return response
-
+@app.route('/students/show_data')
+def note():
+   db_cursor.execute('SELECT * FROM student')
+   data = db_cursor.fetchall()
+   response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+   return response
 
 @app.route('/students/add', methods = ['POST'])
 def add_student():
