@@ -8,8 +8,6 @@ app = Flask(__name__)
 
 @app.route('/students', methods = ['GET'])
 def students():
-    
-
     db_cursor.execute("SELECT * from students")
     data = db_cursor.fetchall()
     response = app.response_class(
@@ -22,13 +20,16 @@ def students():
 
 @app.route('/students/add', methods = ['POST'])
 def add_student():
-    args = request.json
-    print(args)
+    args = request.get_json()
+
+
+    
     response = app.response_class(
         response=json.dumps(args),
         status=200,
         mimetype='application/json'
     )
+    
     return response
 	
 
