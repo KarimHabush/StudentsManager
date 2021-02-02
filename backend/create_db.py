@@ -12,7 +12,7 @@ cursor.execute("CREATE database students_manager;")
 cursor.execute("use students_manager;")
 
 #Create Tables 
-cursor.execute("CREATE TABLE students(id int unsigned not null auto_increment, firstname varchar(20) not null, mark double not null, primary key (id));")
+cursor.execute("CREATE TABLE students(id int unsigned not null auto_increment, name varchar(100) not null, mark double not null, primary key (id));")
 
 cursor.execute("describe students;")
 print(cursor.fetchall())
