@@ -18,7 +18,7 @@ def get_students():
     result = 'Ops..'
   return result
 def delete_student(id):
-  query = ("DELETE FROM students WHERE id = %s")
+  query = ("DELETE FROM students WHERE id = '%s'")
   result = db_cursor.execute(query,(id))
   return result
 def add_student(name,mark): 
