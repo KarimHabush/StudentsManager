@@ -17,10 +17,19 @@ def get_students():
   except Exception:
     result = 'Ops..'
   return result
+
 def delete_student(id):
   query = ("DELETE FROM students WHERE id = '%s'")
-  result = db_cursor.execute(query,(id))
+  try:
+    db_cursor.execute(query,(id))
+    db.commit()
+    result = "L'étudiant est supprimé avec succès"
+  except Exception:
+    result = "L'étudiant n'est pas supprimé"
+  finally:
+    db_cursor.close()
   return result
+
 def add_student(name,mark): 
   query = ("INSERT INTO students (name, mark) VALUES (%s, %s)")
   data = (name,mark)
