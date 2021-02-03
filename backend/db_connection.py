@@ -75,4 +75,3 @@ def update_student(id,name,mark):
     data['error'] = "L'étudiant n'est pas été modifié"
     data['status'] = "failure"
   return data
-
