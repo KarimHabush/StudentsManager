@@ -21,17 +21,6 @@ def get_students():
     data['status'] = "failure"
   return data
 
-def delete_student(id):
-  query = ("DELETE FROM students WHERE id = '%s'")
-  try:
-    db_cursor.execute(query,(id))
-    db.commit()
-    result = "L'étudiant est supprimé avec succès"
-  except Exception:
-    result = "L'étudiant n'est pas supprimé"
-  finally:
-    db_cursor.close()
-  return result
 
 def add_student(name,mark): 
   data = {}
