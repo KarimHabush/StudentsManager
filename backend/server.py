@@ -1,37 +1,63 @@
-from flask import Flask, request, Response,jsonify
-from flask import jsonify
-from flaskext.mysql import MySQL
-from db_connection import db_cursor
+from flask import Flask, request, Response
 import json 
-app = Flask(__name__)
 
+from db_connection import get_students, add_student, delete_student, update_student
+from validation import validate
+
+
+app = Flask(__name__)
 
 @app.route('/students', methods = ['GET'])
 def students():
-    db_cursor.execute("SELECT * from students")
-    data = db_cursor.fetchall()
+    data = get_students()
     response = app.response_class(
         response=json.dumps(data),
         status=200,
         mimetype='application/json'
     )
     return response
-@app.route('/students/show_data')
-def note():
-   db_cursor.execute('SELECT * FROM students')
-   data = db_cursor.fetchall()
-   response = app.response_class(
-        response=json.dumps(data),
+
+@app.route('/students/add', methods = ['POST'])
+def add():
+    args = request.get_json()
+
+    check = validate(args['name'],args['mark'])
+    if check['isValid']:
+        result = add_student(args['name'],args['mark'])
+    else:
+        result = check
+    response = app.response_class(
+        response=json.dumps(result),
         status=200,
         mimetype='application/json'
     )
-   return response
+    
+    return response
 
-@app.route('/students/add', methods = ['POST'])
-def add_student():
+@app.route('/students/delete', methods = ['POST'])
+def delete():
     args = request.get_json()
+    result = delete_student(args['id'])
     response = app.response_class(
-        response=json.dumps(args),
+        response=json.dumps(result),
+        status=200,
+        mimetype='application/json'
+    )
+    
+    return response
+	
+@app.route('/students/update', methods = ['POST'])
+def update():
+
+    args = request.get_json()
+
+    check = validate(args['name'],args['mark'])
+    if check['isValid']:
+        result = update_student(args['id'],args['name'],args['mark'])
+    else:
+        result = check
+    response = app.response_class(
+        response=json.dumps(result),
         status=200,
         mimetype='application/json'
     )

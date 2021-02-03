@@ -4,28 +4,74 @@ import sys
 db = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="root",
+  password="",
   database="students_manager"
 )
 db_cursor = db.cursor()
 
 
 def get_students(): 
-  db_cursor.execute("SELECT * from students")
-  result = db_cursor.fetchall()
-  return result
+  data={}
+  try:
+    db_cursor.execute("SELECT * from students")
+    data['result'] = db_cursor.fetchall()
+    data['status'] = "success"
+  except Exception:
+    data['error'] = "An unexpected error occured!"
+    data['status'] = "failure"
+  return data
 
-def add_student(name,mark):
-  #Potential SQLi [security test]
-  #Use prepared statement
-  query = "INSERT INTO employees (name, mark) VALUES (%s, %s)"
-  data = (name,mark)
-  db_cursor.execute(query, data)
-  result = db_cursor.fetchall()
-  return result
 def delete_student(id):
-  query = "DELETE FROM students where id = %int"
-  result = db_cursor.execute(query)
+  query = ("DELETE FROM students WHERE id = '%s'")
+  try:
+    db_cursor.execute(query,(id))
+    db.commit()
+    result = "L'étudiant est supprimé avec succès"
+  except Exception:
+    result = "L'étudiant n'est pas supprimé"
+  finally:
+    db_cursor.close()
   return result
 
-sys.modules["db_cursor"] = db_cursor
+def add_student(name,mark): 
+  data = {}
+  query = ("INSERT INTO students (name, mark) VALUES (%s, %s)")
+  args = (name,mark)
+  try:
+    db_cursor.execute(query, args)
+    db.commit()
+    data['result'] = "L'étudiant est ajouté avec succès"
+    data['status'] = "success"
+  except Exception:
+    data['error'] = "L'étudiant n'est pas ajouté"
+    data['status'] = "failure"
+  return data
+
+def delete_student(id):
+  data = {}
+  try:
+    query = ("DELETE FROM students where id = %s")
+    args= (id,)
+
+    db_cursor.execute(query,args)
+    db.commit()
+    data['result'] = "L'étudiant est supprimé avec succès"
+    data['status'] = "success"
+  except Exception:
+    data['error'] = "L'étudiant n'est pas été supprimé"
+    data['status'] = "failure"
+  return data
+
+def update_student(id,name,mark):
+  data = {}
+  try:
+    query = ("UPDATE students SET name=%s , mark=%s WHERE id = %s")
+    args= (name,mark,id)
+    db_cursor.execute(query,args)
+    db.commit()
+    data['result'] = "L'étudiant est modifié avec succès"
+    data['status'] = "success"
+  except Exception:
+    data['error'] = "L'étudiant n'est pas été modifié"
+    data['status'] = "failure"
+  return data
