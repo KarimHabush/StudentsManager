@@ -17,7 +17,6 @@ def students():
     )
     return response
 
-
 @app.route('/students/add', methods = ['POST'])
 def add():
     args = request.get_json()
