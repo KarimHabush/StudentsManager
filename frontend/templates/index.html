@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+    <title>Students Manager</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -25,8 +25,8 @@
                             <h2>Manage <b>Students</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
-                                    class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+                            <a href="#addStudentModal" class="btn btn-success" data-toggle="modal"><i
+                                    class="material-icons">&#xE147;</i> <span>Add New Student</span></a>
                         </div>
                     </div>
                 </div>
@@ -47,9 +47,9 @@
                             <td>{{student[1]}}</td>
                             <td>{{student[2]}}</td>
                             <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+                                <a href="#editStudentModal" class="edit" data-toggle="modal"><i class="material-icons"
                                         data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                <a href="#deleteStudentModal" class="delete" data-toggle="modal"><i
                                         class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </td>
                         </tr>
@@ -62,12 +62,12 @@
         {{messages}}
     </div>
     <!-- Edit Modal HTML -->
-    <div id="addEmployeeModal" class="modal fade">
+    <div id="addStudentModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="{{url_for ('add') }}" method="POST">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add Employee</h4>
+                        <h4 class="modal-title">Add Student</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
@@ -89,12 +89,12 @@
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editEmployeeModal" class="modal fade">
+    <div id="editStudentModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="{{url_for ('update') }}" method="POST">
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Employee</h4>
+                        <h4 class="modal-title">Edit Student</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
@@ -108,7 +108,7 @@
                         </div>
                         <div class="form-group">
                             <label>Mark</label>
-                            <input name="mark" class="form-control" required/>
+                            <input name="mark" class="form-control" required />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -120,15 +120,15 @@
         </div>
     </div>
     <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
+    <div id="deleteStudentModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="{{url_for ('delete') }}" method="POST">
                     <div class="modal-header">
-                        <h4 class="modal-title">Delete Employee</h4>
+                        <h4 class="modal-title">Delete Student</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    
+
                     <div class="modal-body">
                         <p>Are you sure you want to delete these Records?</p>
                         <p class="text-warning"><small>This action cannot be undone.</small></p>
