@@ -4,7 +4,7 @@ import sys
 db = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="",
+  password="root",
   database="students_manager"
 )
 db_cursor = db.cursor()
