@@ -6,5 +6,5 @@ FROM python:2.7.16
 
 
 EXPOSE 8081
-CMD [ "python", "./backend/create_db"]
-CMD [ "python", "./backend/server.py"]
+CMD python /backend/create_db
+CMD python /backend/server.py
