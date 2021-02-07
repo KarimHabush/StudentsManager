@@ -5,5 +5,5 @@ FROM python:2.7.16
 #RUN pip install -r requirements.txt
 
 
-EXPOSE 8080
+EXPOSE 8081
 CMD [ "python", "backend/server.py"]
