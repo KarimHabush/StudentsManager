@@ -2,6 +2,7 @@ FROM python:2.7.16
 
 
 # Install app dependencies
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 
