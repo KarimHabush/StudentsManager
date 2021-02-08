@@ -5,6 +5,6 @@ FROM python:2.7.16
 #RUN pip install -r requirements.txt
 
 
-EXPOSE 8081
+EXPOSE 5000
 CMD python /backend/create_db
 CMD python /backend/server.py
