@@ -6,5 +6,7 @@ FROM python:2.7.16
 
 
 EXPOSE 5000
+EXPOSE 3000
 CMD python /backend/create_db
 CMD python /backend/server.py
+CMD python /frontend/app.py
