@@ -2,7 +2,6 @@ FROM python:3.5.3
 
 
 # Install app dependencies
-RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
 
 
