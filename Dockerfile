@@ -16,4 +16,3 @@ EXPOSE 5000
 EXPOSE 3000
 CMD python3 /backend/create_db.py
 CMD python3 /backend/server.py
-CMD python3 /frontend/app.py
