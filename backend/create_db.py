@@ -1,7 +1,7 @@
 import mysql.connector
 
 #establish the connection
-conn = mysql.connector.connect(user='root', password='', host='localhost')
+conn = mysql.connector.connect(user='root', password='', host='127.0.0.1', unix_socket='/var/run/mysqld/mysqld.sock')
 
 #Create a cursor object using the cursor() method
 cursor = conn.cursor()
