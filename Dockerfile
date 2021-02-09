@@ -16,4 +16,4 @@ EXPOSE 5000
 EXPOSE 3000
 CMD python3 server.py
 CMD python3 app.py
-CMD python3 create_db.py
+
