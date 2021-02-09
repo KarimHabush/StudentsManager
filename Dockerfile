@@ -4,6 +4,7 @@ ADD requirements.txt /
 ADD backend/create_db.py /
 ADD backend/server.py /
 ADD frontend/app.py / 
+ADD tests/test_api.py /
 
 
 # Install app dependencies
