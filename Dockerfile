@@ -17,7 +17,7 @@ ADD backend/create_db.py /
 ADD backend/server.py /
 ADD frontend/app.py / 
 ADD backend/db_connection.py /
-ADD backend/validatio.py /
+ADD backend/validation.py /
 ADD backend/__pycache__ /
 ADD frontend/templates /
 ADD frontend/static/stylesheets /
