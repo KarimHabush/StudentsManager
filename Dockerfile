@@ -1,9 +1,9 @@
 FROM python:3.5.3
 
-ADD ./requirements
-ADD ./backend/create_db.py
-ADD ./backend/server.py
-ADD ./frontend/app.py
+ADD ./requirements /
+ADD ./backend/create_db.py /
+ADD ./backend/server.py /
+ADD ./frontend/app.py / 
 
 
 # Install app dependencies
