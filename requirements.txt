@@ -1,7 +1,6 @@
 Flask==1.1.2
 wheel
-setuptools
-jsonlib
+json
 regex==2020.11.13
 requests
 mysql-connector-python
