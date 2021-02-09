@@ -1,5 +1,5 @@
 Flask==1.1.2
-jsonlib==1.1.6
+jsonlib
 regex==2020.11.13
 requests
 mysql-connector-python==8.0.23
