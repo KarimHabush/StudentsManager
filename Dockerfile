@@ -1,12 +1,18 @@
 FROM python:3.5.3
 
+ADD ./requirements
+ADD ./backend/create_db.py
+ADD ./backend/server.py
+ADD ./frontend/app.py
+
 
 # Install app dependencies
+RUN pip3 install --upgrade pip3
 RUN pip3 install -r requirements.txt
 
 
 EXPOSE 5000
 EXPOSE 3000
-CMD python3 /backend/create_db
+CMD python3 /backend/create_db.py
 CMD python3 /backend/server.py
 CMD python3 /frontend/app.py
