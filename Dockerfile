@@ -6,7 +6,7 @@ RUN grep -v bind-address /etc/mysql/my.cnf > temp.txt \
   && mv temp.txt /etc/mysql/my.cnf
 
 # It doesn't seem needed since I'll use -p, but it can't hurt
-EXPOSE 3306
+EXPOSE 33060
 
 CMD /etc/init.d/mysql start
 
