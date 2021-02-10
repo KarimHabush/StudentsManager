@@ -1,7 +1,7 @@
 import mysql.connector
 
 #establish the connection
-conn = mysql.connector.connect(user='root', password='', host='127.0.0.1', port='3306)
+conn = mysql.connector.connect(user='root', password='', host='127.0.0.1', port='33060')
 
 #Create a cursor object using the cursor() method
 cursor = conn.cursor()
