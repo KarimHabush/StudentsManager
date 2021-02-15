@@ -1,13 +1,13 @@
 version: "2"
 services:
   frontend:
-    build: ./frontend/app
+    build: ./frontend/app.py
     links:
       - db
     ports:
       - "3000:3000"
   backend:
-    build: ./backend/server
+    build: ./backend/server.py
     links:
       - db
     ports:
