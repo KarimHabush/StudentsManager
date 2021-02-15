@@ -8,7 +8,12 @@ db = mysql.connector.connect(
   database="students_manager"
 )
 db_cursor = db.cursor()
+cursor.execute("DROP database IF EXISTS students_manager;")
+cursor.execute("CREATE database students_manager;")
+cursor.execute("use students_manager;")
 
+#Create Tables 
+cursor.execute("CREATE TABLE students(id int unsigned not null auto_increment, name varchar(100) not null, mark double not null, primary key (id));")
 
 def get_students(): 
   data={}
