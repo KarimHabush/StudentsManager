@@ -5,7 +5,6 @@ ADD create_db.py /
 ADD server.py /
 ADD db_connection.py /
 ADD validation.py /
-ADD backend/__pycache__ /
 
 
 # Install app dependencies
