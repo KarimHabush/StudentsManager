@@ -1,4 +1,3 @@
-DROP database IF EXISTS students_manager;
 CREATE DATABASE students_manager;
 use students_manager;
 
