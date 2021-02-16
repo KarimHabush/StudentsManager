@@ -10,5 +10,5 @@ WORKDIR /
 COPY requirements.txt /
 RUN pip install -r requirements.txt
 
-COPY server.py /app
+COPY server.py /
 CMD python server.py
