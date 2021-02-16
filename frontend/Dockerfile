@@ -1,18 +1,11 @@
-
-FROM python:3.5.3
-
-ADD requirements.txt /
-ADD app.py / 
-ADD templates /
-ADD static/stylesheets /
-
-
-
-# Install app dependencies
-RUN pip3 install --upgrade pip
-RUN pip3 install --upgrade setuptools
-RUN pip3 install -r requirements.txt
-
+FROM python:3.6
 
 EXPOSE 3000
-CMD python3 app.py
+
+WORKDIR /frontend
+
+COPY requirements.txt /frontend
+RUN pip install -r requirements.txt
+
+COPY app.py /frontend
+CMD python app.py

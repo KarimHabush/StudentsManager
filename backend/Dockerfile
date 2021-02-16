@@ -1,16 +1,14 @@
-FROM python:3.5.3
+FROM python:3.6
 
-ADD requirements.txt /
-ADD server.py /
-ADD db_connection.py /
-ADD validation.py /
-
-
-# Install app dependencies
-RUN pip3 install --upgrade pip
-RUN pip3 install --upgrade setuptools
-RUN pip3 install -r requirements.txt
-
+COPY db_connection.py /backend
+COPY validation.py /backend
 
 EXPOSE 5000
-CMD python3 server.py
+
+WORKDIR /backend
+
+COPY requirements.txt /backend
+RUN pip install -r requirements.txt
+
+COPY server.py /app
+CMD python server.py
