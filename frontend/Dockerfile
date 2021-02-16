@@ -2,10 +2,10 @@ FROM python:3.6
 
 EXPOSE 3000
 
-WORKDIR /frontend
+WORKDIR /
 
-COPY requirements.txt /frontend
+COPY requirements.txt /
 RUN pip install -r requirements.txt
 
-COPY app.py /frontend
+COPY app.py /
 CMD python app.py
