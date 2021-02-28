@@ -23,7 +23,7 @@ services:
     build: ./frontend
     links:
       - db
-      - app
+      - backend
     ports:
       - "3000:3000"
     networks:
