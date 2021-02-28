@@ -8,6 +8,7 @@ def homepage():
     msg=""
     r = requests.get(
         'http://0.0.0.0:5000/students')
+    print(r) 
     if request.args.get("status")=="failure":
         msg="L'opération a échoué, vérifiez vos données et réessayez!"
     elif request.args.get("status")=="success":
