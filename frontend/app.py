@@ -7,7 +7,7 @@ app = Flask(__name__, template_folder='.')
 def homepage():
     msg=""
     r = requests.get(
-        'http://0.0.0.0:5000/students')
+        'http://backend:5000/students')
     print(r) 
     if request.args.get("status")=="failure":
         msg="L'opération a échoué, vérifiez vos données et réessayez!"
@@ -22,7 +22,7 @@ def delete():
     } 
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
-    res = requests.post('http://0.0.0.0:5000/students/delete', json=data, headers=headers)
+    res = requests.post('http://backend:5000/students/delete', json=data, headers=headers)
     return redirect(url_for(".homepage",status=json.loads(res.text)['status']))
 
 @app.route('/update',methods=['POST'])
@@ -34,7 +34,7 @@ def update():
     } 
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
-    res = requests.post('http://0.0.0.0:5000/students/update', json=data, headers=headers)
+    res = requests.post('http://backend:5000/students/update', json=data, headers=headers)
     return redirect(url_for(".homepage",status=json.loads(res.text)['status']))
 
 @app.route('/add',methods=['POST'])
@@ -45,7 +45,7 @@ def add():
     } 
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
-    res = requests.post('http://0.0.0.0:5000/students/add', json=data, headers=headers)
+    res = requests.post('http://backend:5000/students/add', json=data, headers=headers)
     print(res.text)
     return redirect(url_for(".homepage",status=json.loads(res.text)['status']))
 
