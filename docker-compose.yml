@@ -1,5 +1,14 @@
 version: "2"
 services:
+  backend:
+    build: ./app
+    links:
+      - db
+    ports:
+      - "5000:5000"
+    networks:
+      - local
+
   db:
     image: mysql:5.7
     ports:
@@ -8,16 +17,17 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
+    networks:
+      - local
   frontend:
-    build: ./frontend/
+    build: ./frontend
     links:
       - db
+      - app
     ports:
       - "3000:3000"
-  backend:
-    build: ./backend/
-    depends_on:
-      - db
-    ports:
-      - "5000:5000"
-  
+    networks:
+      - local
+networks:
+  local:
+    driver: bridge
