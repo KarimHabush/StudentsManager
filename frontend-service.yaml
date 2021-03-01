@@ -5,7 +5,7 @@ metadata:
     kompose.cmd: C:\WINDOWS\system32\kompose.exe convert
     kompose.version: 1.16.0 (0c01309)
   creationTimestamp: null
-  name: frontend-service
+  name: frontend
   labels:
     app: frontend
 spec:
@@ -14,7 +14,6 @@ spec:
     name: "3000"
     port: 3000
     targetPort: 3000
-  type: LoadBalancer
   selector:
     app: frontend
 status:
