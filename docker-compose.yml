@@ -1,7 +1,7 @@
 version: "2"
 services:
   backend:
-    image: groupiccn/students_manager:latest
+    image: groupiccn/students_manager_backend:v1
     build: ./backend
     links:
       - db
@@ -21,7 +21,7 @@ services:
     networks:
       - local
   frontend:
-    image: groupiccn/students_manager:latest
+    image: groupiccn/students_manager_frontend:v1
     build: ./frontend
     links:
       - db
