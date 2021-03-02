@@ -9,6 +9,8 @@ metadata:
   labels:
     app: frontend 
 spec:
+  imagePullSecrets:
+        - name: my-secret
   replicas: 2
   selector:
     matchLabels:
