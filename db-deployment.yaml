@@ -25,7 +25,7 @@ spec:
       - env:
         - name: MYSQL_ROOT_PASSWORD
           value: root
-        image: groupiccn/students_manager_db:v1
+        image: mysql:5.7
         name: db
         ports:
         - containerPort: 3306
@@ -40,7 +40,5 @@ spec:
         persistentVolumeClaim:
           claimName: db-claim0
           readOnly: true
-      imagePullSecrets:
-        - name: my-secret
 
 status: {}
