@@ -21,7 +21,7 @@ spec:
         app: backend
     spec:
       containers:
-      - image: backend
+      - image: groupiccn/students_manager_backend:v1
         name: backend
         ports:
         - containerPort: 5000
