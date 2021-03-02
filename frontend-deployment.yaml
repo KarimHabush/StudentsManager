@@ -21,7 +21,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - image: frontend
+      - image: groupiccn/students_manager_frontend:v1
         name: frontend
         ports:
         - containerPort: 3000
