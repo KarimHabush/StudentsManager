@@ -9,8 +9,6 @@ metadata:
   labels:
     app: frontend 
 spec:
-  imagePullSecrets:
-        - name: my-secret
   replicas: 2
   selector:
     matchLabels:
@@ -29,4 +27,6 @@ spec:
         - containerPort: 3000
         resources: {}
       restartPolicy: Always
+      imagePullSecrets:
+        - name: my-secret
 status: {}
