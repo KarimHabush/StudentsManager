@@ -21,6 +21,8 @@ spec:
       labels:
         app: db
     spec:
+      imagePullSecrets:
+        - name: my-secret
       containers:
       - env:
         - name: MYSQL_ROOT_PASSWORD
