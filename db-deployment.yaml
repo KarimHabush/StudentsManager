@@ -25,7 +25,7 @@ spec:
       - env:
         - name: MYSQL_ROOT_PASSWORD
           value: root
-        image: mysql:5.7
+        image: groupiccn/students_manager_db:v1
         name: db
         ports:
         - containerPort: 3306
